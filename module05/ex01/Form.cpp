@@ -3,6 +3,10 @@
 Form::Form(const std::string _name, const int _grade, const int _exec) : name(_name), grade(_grade), exec(_exec)
 {
 	this->isSigned = false;
+	if (_grade < 1)
+		throw GradeTooHighException();
+	if (_grade > 150)
+		throw GradeTooLowException();
 }
 
 Form::Form(const Form &copy) : name(copy.name), grade(copy.grade) , exec(copy.exec)
@@ -20,17 +24,17 @@ Form::~Form()
 {
 }
 
-const std::string Form::getName() const
+std::string Form::getName() const
 {
 	return (this->name);
 }
 
-const int Form::getGrade() const
+int Form::getGrade() const
 {
 	return (this->grade);
 }
 
-const int Form::getExec() const
+int Form::getExec() const
 {
 	return this->exec;
 }

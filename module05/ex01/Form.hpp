@@ -22,9 +22,9 @@ class Form
 		~Form();
 
 		// getters
-		const std::string getName() const;
-		const int getGrade() const;
-		const int getExec() const;
+		std::string getName() const;
+		int getGrade() const;
+		int getExec() const;
 		bool getIsSigned() const;
 
 		// signing
