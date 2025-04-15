@@ -1,15 +1,22 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main()
 {
 	try
 	{
-		Form test("test", 9, 7);
+		PresidentialPardonForm test("home");
+		// std::cout << test;
 		try
 		{
 			Bureaucrat tester("tester", 8);
 			tester.signForm(test);
+			tester.executeForm(test);
+	
+			// std::cout << test;
 		}
 		catch (std::exception &f)
 		{

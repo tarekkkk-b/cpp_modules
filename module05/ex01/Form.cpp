@@ -3,9 +3,9 @@
 Form::Form(const std::string _name, const int _grade, const int _exec) : name(_name), grade(_grade), exec(_exec)
 {
 	this->isSigned = false;
-	if (_grade < 1)
+	if (_grade < 1 || _exec < 1)
 		throw GradeTooHighException();
-	if (_grade > 150)
+	if (_grade > 150 || _exec > 150)
 		throw GradeTooLowException();
 }
 
@@ -68,7 +68,7 @@ const char*	Form::GradeTooHighException::what() const throw()
 
 std::ostream &operator<<(std::ostream &os, const Form &f)
 {
-	os << "Form '\"'" << f.getName() << "'\"' needs at least grade " << f.getGrade() << " to be signed\n";
+	os << "Form \"" << f.getName() << "\" needs at least grade " << f.getGrade() << " to be signed and at least grade " << f.getExec() << " to execute.\n";
 	if (f.getIsSigned())
 		os << "This form has already been signed\n";
 	else
