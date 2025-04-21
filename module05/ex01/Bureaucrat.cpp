@@ -1,5 +1,11 @@
 #include "Bureaucrat.hpp"
 
+Bureaucrat::Bureaucrat()
+{
+	this->name = "Random";
+	this->grade = 150;
+}
+
 Bureaucrat::~Bureaucrat()
 {
 }

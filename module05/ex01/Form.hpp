@@ -11,11 +11,11 @@ class Form
 		const int grade;
 		const int exec;
 		bool isSigned;
-		Form();
 		
 	public:
 		
 		// instantiation
+		Form();
 		Form(const std::string _name, const int _grade, const int _exec);
 		Form &operator=(const Form &ref);
 		Form(const Form &copy);

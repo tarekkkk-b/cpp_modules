@@ -4,9 +4,9 @@ Form::Form(const std::string _name, const int _grade, const int _exec) : name(_n
 {
 	this->isSigned = false;
 	if (_grade < 1 || _exec < 1)
-		throw GradeTooHighException();
+	throw GradeTooHighException();
 	if (_grade > 150 || _exec > 150)
-		throw GradeTooLowException();
+	throw GradeTooLowException();
 }
 
 Form::Form(const Form &copy) : name(copy.name), grade(copy.grade) , exec(copy.exec)
@@ -18,6 +18,11 @@ Form &Form::operator=(const Form &ref)
 {
 	(void)ref;
 	return (*this);
+}
+
+Form::Form() : name("Not Important Form"), grade(150), exec(150)
+{
+	this->isSigned = false;
 }
 
 Form::~Form()

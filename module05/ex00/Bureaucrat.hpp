@@ -6,11 +6,11 @@ class Bureaucrat
 	private:
 		std::string name;
 		int	grade;
-		Bureaucrat();
-
+		
 	public:
-
+		
 		// instantiation
+		Bureaucrat();
 		Bureaucrat(const std::string name, const int grade);
 		Bureaucrat(const Bureaucrat &copy);
 		Bureaucrat &operator=(const Bureaucrat &src);
