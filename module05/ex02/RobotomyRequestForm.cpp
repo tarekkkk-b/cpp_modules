@@ -2,16 +2,19 @@
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
 {
+	srand(time(NULL));
 	this->target = "RandomTarget";
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string _target) : AForm("RobotomyRequestForm", 72, 45)
 {
+	srand(time(NULL));
 	this->target = _target;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) : AForm("RobotomyRequestForm", 72, 45)
 {
+	srand(time(NULL));
 	this->target = copy.target;
 }
 
@@ -31,8 +34,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	{
 		check_requirements(executor);
 		std::cout << "* some drilling noises *\n";
-		int random = rand() % 101;
-		if (random % 2 == 0)
+		if (rand() % 2 == 0)
 			std::cout << this->target << " has been robotomized successfully.\n";
 		else
 			std::cout << this->target << " was unable to be robotomized.\n";

@@ -6,13 +6,19 @@
 
 int main()
 {
+	RobotomyRequestForm rbf = RobotomyRequestForm("Tarek");
 	try
 	{
 		PresidentialPardonForm test("home");
+		ShrubberyCreationForm test2("home");
 		// std::cout << test;
 		try
 		{
 			Bureaucrat tester("tester", 8);
+			tester.signForm(rbf);
+			tester.executeForm(rbf);
+			tester.signForm(test2);
+			tester.executeForm(test2);
 			tester.signForm(test);
 			tester.executeForm(test);
 	
