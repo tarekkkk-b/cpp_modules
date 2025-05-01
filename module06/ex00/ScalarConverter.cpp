@@ -8,6 +8,12 @@ ScalarConverter::~ScalarConverter()
 {
 }
 
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &ref)
+{
+	(void)ref;
+	return *this;
+}
+
 // convert function
 void ScalarConverter::convert(const std::string input)
 {
@@ -136,12 +142,12 @@ void ScalarConverter::fromFloat(const std::string input)
 {
 	float number;
 	std::string toParse = input;
-
+	
 	if (handle_inff(input))
-		return ;
+	return ;
 	
 	if (!toParse.empty() && toParse[toParse.length() - 1] == 'f')
-		toParse.erase(toParse.length() - 1);	
+	toParse.erase(toParse.length() - 1);	
 	
 	std::stringstream ss(toParse);
 	if (!(ss >> number) || !(ss.eof()))
@@ -152,25 +158,30 @@ void ScalarConverter::fromFloat(const std::string input)
 		std::cout << "double: impossible\n";
 		return ;
 	}
-
+	
 	// char
 	std::cout << "char: ";
 	if (static_cast<int>(number) >= 0 && static_cast<int>(number) <= 127)
 	{
 		if (isprint(static_cast<int>(number)))
-			std::cout << static_cast<char>(number) << std::endl;
+		std::cout << static_cast<char>(number) << std::endl;
 		else
-			std::cout << "non displayable\n";
+		std::cout << "non displayable\n";
 	}
 	else
-		std::cout << "impossible\n";
+	std::cout << "impossible\n";
 	
 	// int
 	std::cout << "int: ";
-	if (number > static_cast<float>(INT_MAX) || number < static_cast<float>(INT_MIN))
-	    std::cout << "impossible" << std::endl;
+	// if (number > static_cast<int>(INT_MAX) || number < static_cast<int>(INT_MIN))
+	int int_num;
+	std::stringstream ss_int(input.substr(0, input.find_first_not_of("0123456789")));
+	if (!(ss_int >> int_num) || !(ss_int.eof()))
+	{
+		std::cout << "impossible" << std::endl;
+	}
 	else
-	    std::cout << static_cast<int>(number) << std::endl;
+	    std::cout << static_cast<int>(int_num) << std::endl;
 
 	// float
 	std::cout << "float: " << number << "f" << std::endl;
@@ -287,9 +298,9 @@ bool isFloat(const std::string input)
 		return false;
 	while (i < input.length() - 1)
 	{
-		if (input[i] == '.' && !trigger)
+		if (input[i] == '.')
 		{
-			trigger = 1;
+			trigger++;
 			i++;
 			continue;
 		}
@@ -297,7 +308,7 @@ bool isFloat(const std::string input)
 		return false;
 		i++;
 	}
-	if (!trigger)
+	if (trigger > 1)
 		return false;
 	return true;
 }

@@ -10,6 +10,8 @@ class ScalarConverter
 	private:
 		ScalarConverter();
 		~ScalarConverter();
+		ScalarConverter(const ScalarConverter &copy);
+		ScalarConverter &operator=(const ScalarConverter &ref);
 		enum e_types
 		{
 			CHAR,
