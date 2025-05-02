@@ -175,7 +175,7 @@ void ScalarConverter::fromFloat(const std::string input)
 	std::cout << "int: ";
 	// if (number > static_cast<int>(INT_MAX) || number < static_cast<int>(INT_MIN))
 	int int_num;
-	std::stringstream ss_int(input.substr(0, input.find_first_not_of("0123456789")));
+	std::stringstream ss_int(input.substr(0, input.find_first_not_of("-0123456789")));
 	if (!(ss_int >> int_num) || !(ss_int.eof()))
 	{
 		std::cout << "impossible" << std::endl;
