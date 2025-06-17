@@ -12,7 +12,7 @@ void swap(variable &a, variable &b)
 }
 
 template <typename variable>
-variable max(variable a, variable b)
+variable &max(variable &a, variable &b)
 {
 	if (a > b)
 		return a;
@@ -20,7 +20,7 @@ variable max(variable a, variable b)
 }
 
 template <typename variable>
-variable min(variable a, variable b)
+variable &min(variable &a, variable &b)
 {
 	if (a < b)
 		return a;
