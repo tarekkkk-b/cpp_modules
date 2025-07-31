@@ -10,8 +10,9 @@ RPN::~RPN()
 
 void RPN::parsing(std::string arg)
 {
-	size_t pos = arg.find_first_not_of("0123456789+-*/ \t");
-	if (pos != std::string::npos)
+	if (arg.find_first_of("0123456789+-*/") == std::string::npos)
+		throw InvalidArgument();
+	if (arg.find_first_not_of("0123456789+-*/ \t") != std::string::npos)
 		throw InvalidArgument();
 	
 	std::stringstream ss(arg);
