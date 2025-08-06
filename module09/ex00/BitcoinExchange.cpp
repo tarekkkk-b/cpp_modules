@@ -8,6 +8,17 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
+{
+	(void)copy;
+}
+
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &ref)
+{
+	(void)ref;
+	return *this;
+}
+
 const char *BitcoinExchange::CantOpenException::what() const throw()
 {
 	return "Couldn't open database.\n";

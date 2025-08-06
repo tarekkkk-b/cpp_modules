@@ -13,6 +13,8 @@ class RPN
 		
 	public:
 		RPN();
+		RPN(const RPN &copy);
+		RPN &operator=(const RPN &ref);
 		~RPN();
 
 		void parsing(std::string arg);

@@ -12,15 +12,15 @@ PmergeMe::~PmergeMe()
 
 PmergeMe::PmergeMe(const PmergeMe &copy)
 {
-	this->vector = copy.vector;
-	this->vectorTime = copy.vectorTime;
-	this->deque = copy.deque;
-	this->dequeTime = copy.dequeTime;
+	*this = copy;
 }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &ref)
 {
-	*this = ref;
+	this->vector = ref.vector;
+	this->vectorTime = ref.vectorTime;
+	this->deque = ref.deque;
+	this->dequeTime = ref.dequeTime;
 	return *this;
 }
 

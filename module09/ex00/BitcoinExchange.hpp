@@ -20,6 +20,8 @@ class BitcoinExchange
 	public:
 		BitcoinExchange();
 		~BitcoinExchange();
+		BitcoinExchange(const BitcoinExchange &copy);
+		BitcoinExchange &operator=(const BitcoinExchange &ref);
 		void open_db(const char *input);
 		void parse_db();
 		bool validLine(std::string str, char sep);
