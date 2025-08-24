@@ -8,6 +8,8 @@
 #include <set>
 #include <sys/time.h>
 #include <cmath>
+#include <limits.h>
+#include <sstream>
 
 class PmergeMe
 {
@@ -32,8 +34,6 @@ class PmergeMe
 		PmergeMe(const PmergeMe &copy);
 		PmergeMe &operator=(const PmergeMe &ref);
 		
-		// template <typename C>
-		// int	binaryInsertSearch(int _toInsert, size_t capIndex, C& container);
 		template <typename C>
 		size_t binaryInsertSearch(int val, size_t cap, const C &container);
 
@@ -47,11 +47,9 @@ class PmergeMe
 		void rearrangePend(C &old, C &main, C &pend);
 
 		long getJacobsthal(int index);
-		void print(std::vector<int>& vector);
 		void validate(char **av);
 		void printVector() const;
 		void printSet() const;
 		void sortVector();
 		void sortDeque();
-
 };
