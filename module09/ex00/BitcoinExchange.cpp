@@ -8,17 +8,6 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
-{
-	(void)copy;
-}
-
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &ref)
-{
-	(void)ref;
-	return *this;
-}
-
 const char *BitcoinExchange::CantOpenException::what() const throw()
 {
 	return "Couldn't open database.\n";
@@ -60,8 +49,6 @@ void BitcoinExchange::parse_db()
 		std::ostringstream oss;
 		oss << it->second;
 		std::string test = oss.str();
-		// printf("%f\n", it->second);
-		// std::cout << it->first << "," << test << std::endl;
 		it++;
 	}
 }
@@ -149,24 +136,13 @@ bool BitcoinExchange::validateData()
 
 	std::getline(this->data, line);
 	if (line != "date,exchange_rate")
-	{
-		// std::cerr << "here1\n";
 		return false;
-	}
 	while (std::getline(this->data, line))
 	{
 		if (!this->validLine(line, ','))
-		{
-			// std::cerr << "here2\n" << line << std::endl;
 			return false;
-		}
 		std::string date = line.substr(0, 10);
 		double value = static_cast<double>(std::atof(line.substr(line.find_first_of(',') + 1, std::string::npos).c_str()));
-		// if (value < 0 || value > 1000)
-		// {
-		// 	std::cerr << value << " here3\n";
-		// 	return false;
-		// }
 		this->db.insert(std::make_pair(date, value));
 	}
 	return true;
@@ -182,12 +158,8 @@ void BitcoinExchange::printResults()
 		std::cerr << this->fileName << ": ";
 		throw InvalidException();
 	}
-	// int i = 0;
 	while (std::getline(this->user, line))
 	{
-		// i++;
-		// std::cout << i << std::endl;
-		// std::cout << line << ":	";
 		if (!this->validLine(line, '|'))
 		{
 			std::cerr << "Error: bad input => " << line << std::endl;
@@ -210,14 +182,12 @@ void BitcoinExchange::printResults()
 		if (it == this->db.end())
 		{
 			it = this->db.lower_bound(year);
-			// std::cout << it->first << ":    " << it->second << std::endl;
 			if (it == this->db.begin())
 			{
 				std::cerr << "Error: Year and its lower bound doesn't exist" << " => " << line << "\n";
 				continue;
 			}
 			it--;
-			// std::cout << year << " => " << value << " = " << it->first << "\n";
 		}
 		std::cout << year << " => " << value << " = " << it->second * value << "\n";
 		

@@ -14,14 +14,12 @@ class BitcoinExchange
 		std::ifstream data;
 		std::ifstream user;
 		std::string fileName;
-		BitcoinExchange(const BitcoinExchange  & copy);
-		BitcoinExchange &operator=(const BitcoinExchange & ref);
+		BitcoinExchange(const BitcoinExchange &copy);
+		BitcoinExchange &operator=(const BitcoinExchange &ref);
 		
 	public:
 		BitcoinExchange();
 		~BitcoinExchange();
-		BitcoinExchange(const BitcoinExchange &copy);
-		BitcoinExchange &operator=(const BitcoinExchange &ref);
 		void open_db(const char *input);
 		void parse_db();
 		bool validLine(std::string str, char sep);

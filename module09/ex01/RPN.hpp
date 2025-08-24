@@ -10,11 +10,11 @@ class RPN
 	private:
 		std::stack<int> nums;
 		std::stack<std::string> split;
+		RPN(const RPN &copy);
+		RPN &operator=(const RPN &ref);
 		
 	public:
 		RPN();
-		RPN(const RPN &copy);
-		RPN &operator=(const RPN &ref);
 		~RPN();
 
 		void parsing(std::string arg);

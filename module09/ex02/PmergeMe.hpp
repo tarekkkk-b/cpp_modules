@@ -24,15 +24,16 @@ class PmergeMe
 		bool				straggler;
 		static long			jacobsthal[];
 
+		PmergeMe(const PmergeMe &copy);
+		PmergeMe &operator=(const PmergeMe &ref);
 
-		template<typename C>
-		C mergeInsert(C &container);
-
+		
 	public:
 		PmergeMe();
 		~PmergeMe();
-		PmergeMe(const PmergeMe &copy);
-		PmergeMe &operator=(const PmergeMe &ref);
+
+		template<typename C>
+		C mergeInsert(C &container);
 		
 		template <typename C>
 		size_t binaryInsertSearch(int val, size_t cap, const C &container);

@@ -159,20 +159,6 @@ PmergeMe::~PmergeMe()
 {
 }
 
-PmergeMe::PmergeMe(const PmergeMe &copy)
-{
-	*this = copy;
-}
-
-PmergeMe &PmergeMe::operator=(const PmergeMe &ref)
-{
-	this->vector = ref.vector;
-	this->vectorTime = ref.vectorTime;
-	this->deque = ref.deque;
-	this->dequeTime = ref.dequeTime;
-	return *this;
-}
-
 void PmergeMe::validate(char **av)
 {
 	for (int i = 1; av[i]; i++)
