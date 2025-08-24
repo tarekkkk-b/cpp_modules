@@ -17,5 +17,8 @@ int main(int ac, char **av)
 		std::cerr << e.what() << std::endl;
 		return 1;
 	}
-	return 0;
+	run.printVector();
+	run.printSet();
+	run.sortVector();
+	run.sortDeque();
 }
